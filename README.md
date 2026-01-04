@@ -1,28 +1,49 @@
-# Simple Port Scanner (Python)
+# 🔍 Python Multi-Threaded Port Scanner
 
-A basic TCP connect port scanner written in Python using the built-in `socket` module.  
-This project is made for learning how port scanning works at a low level.
+A fast and lightweight **TCP port scanner** written in Python using multithreading and a queue-based worker model.  
+The scanner detects open ports, performs **basic banner grabbing**, and identifies **HTTP services** on common HTTP ports.
 
----
-
-## 🔹 What it does
-- Takes a target domain or IP
-- Scans a given port range
-- Prints only open ports
-- Uses socket timeouts to avoid freezing
+This project is intended for **learning and understanding** how real port scanners work internally.
 
 ---
 
-## 🔹 How it works
-For each port:
-- Create a socket
-- Set a timeout
-- Try to connect
-- If connection succeeds → port is OPEN
-- If it fails → move to next port
+## ✨ Features
+
+- Multi-threaded port scanning
+- Queue-based worker architecture
+- TCP connect scan using `connect_ex`
+- Open port detection
+- Basic banner grabbing
+- Active HTTP service detection using `HEAD` requests
+- Thread-safe console output
+- Saves scan results to a file
 
 ---
 
-## 🔹 Requirements
-- Python 3.x
-- No external libraries
+## 🧠 How It Works
+
+1. Ports are added to a shared queue  
+2. A fixed pool of threads consumes ports from the queue  
+3. Each thread:
+   - Creates a socket
+   - Attempts a TCP connection
+   - Checks if the port is open
+   - Grabs service banners (if available)
+   - Performs HTTP detection on common HTTP ports
+4. Results are printed and saved safely using a thread lock
+
+---
+
+## 🛠 Requirements
+
+- Python 3.x  
+- No external libraries (uses only the Python standard library)
+
+---
+
+## 🚀 Usage
+
+Run the script:
+
+```bash
+python port_scanner.py
