@@ -1,2 +1,4 @@
+Scan results for scanme.nmap.org
+==================================================
+[OPEN] 22 | SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.13
 [OPEN] 80 | HTTP | HTTP/1.1 200 OK | Server: Apache/2.4.7 (Ubuntu)
-
